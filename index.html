@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Kiểm tra tuổi</th>
+        <td><label><input type="number" id="age" onchange="age_changed()"></label></td>
+        <td><label id="age_result"></label></td>
+    </tr>
+
+    <tr>
+        <th>Kiểm tra chẵn lẻ</th>
+        <td><label><input type="number" id="chan_le" onchange="chan_le_changed()"></label></td>
+        <td><label id="chan_le_result"></label></td>
+    </tr>
+
+    <tr>
+        <th>So sánh</th>
+        <td>
+            <label><input style="width: 75px" type="number" id="a" onchange="so_sanh_changed()"></label>
+            <label><input style="width: 75px" type="number" id="b" onchange="so_sanh_changed()"></label>
+        </td>
+        <td><label id="so_sanh_result"></label></td>
+    </tr>
+
+    <tr>
+        <th>Số lớn nhất</th>
+        <td>
+            <label><input style="width: 46px" type="number" id="max_a" onchange="max_changed()"></label>
+            <label><input style="width: 46px" type="number" id="max_b" onchange="max_changed()"></label>
+            <label><input style="width: 46px" type="number" id="max_c" onchange="max_changed()"></label>
+        </td>
+        <td><label id="max_result"></label></td>
+    </tr>
+</table>
+
+<script>
+
+    // age
+    function age_changed() {
+        let age = document.getElementById("age").value
+        if (age > 18) {
+            document.getElementById("age_result").innerText = "Đủ tuổi"
+        }
+    }
+
+    // chan le
+    function chan_le_changed() {
+        let chan_le = +document.getElementById("chan_le").value
+        if (chan_le % 2) {
+            document.getElementById("chan_le_result").innerText = "Số lẻ"
+        } else {
+            document.getElementById("chan_le_result").innerText = "Số chẵn"
+        }
+    }
+
+    // so sanh
+    function so_sanh_changed() {
+        let a = +document.getElementById("a").value
+        let b = +document.getElementById("b").value
+        let result;
+        if (a > b) {
+            result = a + b;
+        } else if (a < b) {
+            result = a * b;
+        } else {
+            result = "Hihi";
+        }
+
+        document.getElementById("so_sanh_result").innerText = result
+    }
+
+    // max
+    function max_changed() {
+        let a = +document.getElementById("max_a").value
+        let b = +document.getElementById("max_b").value
+        let c = +document.getElementById("max_c").value
+        let result;
+        if (a>=b && a>=c) {
+            result = a;
+        } else if (b>=a && b>=c) {
+            result = b;
+        } else {
+            result = c;
+        }
+
+        document.getElementById("max_result").innerText = result
+    }
+</script>
+</body>
+</html>
